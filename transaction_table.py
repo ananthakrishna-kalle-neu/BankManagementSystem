@@ -7,4 +7,11 @@ conn = sql.connect(
     use_pure=True
 )
 cur = conn.cursor()
-cur.execute("CREATE TABLE transactions(acc_no INT(11),date date, withdrawal_amt bigint(20), amount_added bigint(20))")
+cur.execute("""
+    CREATE TABLE IF NOT EXISTS transactions (
+        acc_no INT(11),
+        trans_date DATE,
+        withdrawal_amt BIGINT(20),
+        amount_added BIGINT(20)
+    )
+""")
